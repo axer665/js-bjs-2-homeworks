@@ -1,7 +1,7 @@
 function Student(name, gender, age) {
-	name;
-	gender;
-	age;
+	this.name = name;
+	this.gender = gender;
+	this.age = age;
 	this.marks = [];
 }
 
