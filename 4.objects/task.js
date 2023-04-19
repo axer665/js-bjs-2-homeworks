@@ -10,6 +10,9 @@ Student.prototype.setSubject = function(subjectName) {
 }
 
 Student.prototype.addMarks = function(...marks) {
+	if (this.excluded) {
+		return "undefined";
+	}
 	// если у нас уже есть какие-то оценки, то добавим к ним новые
 	if (this.marks) {
 		this.marks = [...this.marks, ...marks];
