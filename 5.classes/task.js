@@ -11,7 +11,7 @@ class PrintEditionItem {
     }
 
     fix () {
-        let value = this.#correctState(this.#state * 1.5);
+        const value = this.#correctState(this.#state * 1.5);
         this.#state = value;
     }
 
@@ -84,29 +84,15 @@ class Library {
     }
 
     findBookBy = (type, value) => {
-        let book = this.books.find(book => book[type] == value);
-        if (book) {
-            return book;
-        }
-        return null;
+        const findResult = this.books.find((item) => item[type] === value);
+        return findResult || null;
     }
 
     giveBookByName = (bookName) => {
-        let searchBook;
-        let books = this.books.map(book => {
-            if (book.name == bookName) {
-                searchBook = book
-            } else {
-                return book;
-            }
-        });
-        this.books = books.filter(function( element ) {
-            return element !== undefined;
-         });
-        if (searchBook) {
-            return searchBook;
-         } 
-        return null;
+        const book = this.findBookBy("name", bookName);
+        if (!book) return null;
+        this.books = this.books.filter((item) => item.name !== bookName);
+        return book;
     }
 }
 
